@@ -1,4 +1,4 @@
-package hello
+package main
 
 import (
 	"html/template"
@@ -10,7 +10,7 @@ func hello(w http.ResponseWriter, r *http.Request) {
 	t.Execute(w, "Hello World!")
 }
 
-func init() {
+func main() {
 	http.HandleFunc("/", hello)
 	http.ListenAndServe(":80", nil)
 }
