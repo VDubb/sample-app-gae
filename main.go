@@ -24,12 +24,9 @@ const homepage = '<!doctype html>
 </html>'
 
 func homepageHandler(w http.ResponseWriter, r *http.Request) {
-        fmt.Fprint(w, homepage)
-}
-
-func hello(w http.ResponseWriter, r *http.Request) {
-	t, _ := template.ParseFiles("index.html")
+	t, _ := template.Parse(homepage)
 	t.Execute(w, "Hello World!")
+	//fmt.Fprint(w, homepage)
 }
 
 func main() {
