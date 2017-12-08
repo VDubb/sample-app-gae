@@ -3,7 +3,29 @@ package main
 import (
 	"html/template"
 	"net/http"
+
+	"google.golang.org/appengine"
 )
+
+const homepage = '<!doctype html>
+<html>
+<head>
+	<style>
+		body {
+			background-color: blue;
+		}
+	</style>
+</head>
+<body>
+	<center><h1><font color=white>
+		{{ . }}
+	</font></h1></center>
+</body>
+</html>'
+
+func homepageHandler(w http.ResponseWriter, r *http.Request) {
+        fmt.Fprint(w, homepage)
+}
 
 func hello(w http.ResponseWriter, r *http.Request) {
 	t, _ := template.ParseFiles("index.html")
@@ -11,6 +33,6 @@ func hello(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-	http.HandleFunc("/", hello)
-	http.ListenAndServe(":80", nil)
+	http.HandleFunc("/", homepageHandler)
+	appengine.Main()
 }
