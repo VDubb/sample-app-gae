@@ -1,9 +1,9 @@
 runtime: go
 env: flex
 
-network:
-  forwarded_ports:
-    - 80/tcp
+handlers:
+- url: /.*
+  script: _go_app
 
 # This sample incurs costs to run on the App Engine flexible environment. 
 # The settings below are to reduce costs during testing and are not appropriate
