@@ -2,7 +2,7 @@ runtime: go
 env: flex
 
 handlers:
-- url: /.*
+- url: /
   script: _go_app
 
 # This sample incurs costs to run on the App Engine flexible environment. 
