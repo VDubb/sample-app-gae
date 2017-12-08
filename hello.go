@@ -1,4 +1,4 @@
-package main
+package hello
 
 import (
 	"fmt"
@@ -12,7 +12,7 @@ func hello(w http.ResponseWriter, r *http.Request) {
 	t.Execute(w, "Hello World!")
 }
 
-func main() {
+func init() {
 	http.HandleFunc("/", hello)
 	fmt.Println("Server running...")
 	log.Fatal(http.ListenAndServe(":80", nil))
